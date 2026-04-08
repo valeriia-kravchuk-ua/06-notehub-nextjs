@@ -1,0 +1,19 @@
+// components/NoteItem/NoteItem.tsx
+
+import Link from 'next/link';
+import {Note} from "@/app/types/note";
+
+
+type Props = {
+    item: Note;
+};
+
+const NoteItem = ({ item }: Props) => {
+    return (
+        <li>
+            <Link href={`/notes/${item.id}`}>{item.title}</Link>
+        </li>
+    );
+};
+
+export default NoteItem;
