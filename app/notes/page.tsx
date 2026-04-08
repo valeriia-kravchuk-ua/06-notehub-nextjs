@@ -4,14 +4,14 @@ import {dehydrate} from "@tanstack/query-core";
 import NotesClient from "@/app/notes/Notes.client";
 import {fetchNotes} from "@/lib/api";
 
-// Реалізуйте сторінковий компонент Notes у маршруті /notes як SSR-компонент, д
-// е заздалегідь виконується prefetch (попереднє завантаження даних через TanStack Query)
-// з гідратацією кешу.
 type Props = {
-    params: { currentPage: number, query:string };
+    searchParams: { page?: string; query?: string };
 };
-const  Notes = async ({params}: Props)=> {
-    const {currentPage, query} = await params;
+
+const  Notes = async ({searchParams}: Props)=> {
+
+    const currentPage = Number(searchParams.page) || 1;
+    const query = searchParams.query || '';
 
     const queryClient = new QueryClient();
 
@@ -22,7 +22,7 @@ const  Notes = async ({params}: Props)=> {
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>
-            <NotesClient />
+            <NotesClient initialQuery={query} initialPage={currentPage} />
         </HydrationBoundary>
     )
 }

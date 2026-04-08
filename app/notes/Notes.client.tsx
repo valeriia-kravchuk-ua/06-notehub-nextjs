@@ -11,13 +11,16 @@ import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import NoteList from "@/components/NoteList/NoteList";
 import { useDebouncedCallback } from 'use-debounce';
- // Усю клієнтську логіку (отримання списку нотаток за допомогою useQuery та їх відображення)
-// винесіть в окремий файл компонента app/notes/Notes.client.tsx.
 
-const  NotesClient = ()=> {
-    const [currentPage, setCurrentPage] = useState(1);
+
+type Props = {
+    initialQuery: string;
+    initialPage: number;
+};
+const  NotesClient = ( { initialQuery, initialPage }: Props)=> {
+    const [currentPage, setCurrentPage] = useState(initialPage);
     const [open, setOpen] = useState(false);
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState(initialQuery);
 
     const {data, isLoading, isError, isSuccess} = useQuery({
         queryKey: ['notes', query, currentPage],
