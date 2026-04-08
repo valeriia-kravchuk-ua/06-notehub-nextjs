@@ -1,9 +1,7 @@
-// app/notes/[id]/page.tsx
-
-import {getSingleNote} from "@/lib/api";
 import {HydrationBoundary, QueryClient} from "@tanstack/react-query";
 import {dehydrate} from "@tanstack/query-core";
 import NoteDetailsClient from "@/app/notes/[id]/NoteDetails.client";
+import {fetchNoteById} from "@/lib/api";
 
 type Props = {
     params: Promise<{ id: string }>;
@@ -11,7 +9,7 @@ type Props = {
 
 const NoteDetails = async ({params}: Props) => {
     const {id} = await params;
-    const note = await getSingleNote(id);
+    const note = await fetchNoteById(id);
     console.log('NoteDetails',note);
     console.log('note id:', id);
 
@@ -19,7 +17,7 @@ const NoteDetails = async ({params}: Props) => {
 
     await queryClient.prefetchQuery({
         queryKey: ["note", id],
-        queryFn: () => getSingleNote(id),
+        queryFn: () => fetchNoteById(id),
     });
 
     return (

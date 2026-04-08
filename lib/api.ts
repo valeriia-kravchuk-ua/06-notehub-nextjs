@@ -37,7 +37,7 @@ export async function fetchNotes(page: number, query?: string,): Promise<NotesRe
     }
 }
 
-export const getSingleNote = async (id: string) => {
+export const fetchNoteById = async (id: string) => {
     const res = await axios.get<Note>(`https://notehub-public.goit.study/api/notes/${id}`, {
         headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,

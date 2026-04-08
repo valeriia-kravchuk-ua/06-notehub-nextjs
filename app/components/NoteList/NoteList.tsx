@@ -2,6 +2,8 @@ import css from './NoteList.module.css'
 import type {Note} from "../../types/note.ts";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {deleteNote} from "@/lib/api";
+import NoteItem from "@/app/components/NoteItem/NoteItem";
+import Link from "next/link";
 
 
 
@@ -33,6 +35,7 @@ export default function NoteList({notes}: NoteListProps) {
                     <p className={css.content}>{note.content}</p>
                     <div className={css.footer}>
                         <span className={css.tag}>{note.tag}</span>
+                        <Link href={`/notes/${note.id}`} className={css.buttonDetails}>View details</Link>
                         <button className={css.button} onClick={() => handleDelete(note.id)}>Delete</button>
                     </div>
                 </li>

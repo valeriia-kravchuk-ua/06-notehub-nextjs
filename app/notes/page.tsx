@@ -1,6 +1,3 @@
-
-
-
 import {HydrationBoundary, QueryClient} from '@tanstack/react-query';
 import {dehydrate} from "@tanstack/query-core";
 
@@ -22,7 +19,7 @@ const  Notes = async ({params}: Props)=> {
     const queryClient = new QueryClient();
 
     await queryClient.prefetchQuery({
-        queryKey: ["note", query, currentPage],
+        queryKey: ["notes", query, currentPage],
         queryFn: () => fetchNotes(currentPage, query),
     });
 

@@ -61,7 +61,7 @@ const  NotesClient = ()=> {
     return (
         <>
             <section className={css.app}>
-
+                <div className={css.box}>
                 <SearchBox onChange={debounced}/>
                 {isSuccess && totalPages > 1 && (
                     <Pagination
@@ -75,6 +75,7 @@ const  NotesClient = ()=> {
                     reverseOrder={false}
                 />
                 <button onClick={() => setOpen(true)} className={css.button}>Create note +</button>
+                </div>
                 {open && <Modal onClose={handleClose} children={<NoteForm onClose={handleClose}/>}/>}
 
                 {!isLoading && query && notes.length === 0 && (
