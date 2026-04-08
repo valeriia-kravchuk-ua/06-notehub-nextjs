@@ -1,5 +1,5 @@
 import axios from "axios";
-import {Note} from "@/app/types/note";
+import {Note} from "@/types/note";
 
 
 interface NotesResponse {

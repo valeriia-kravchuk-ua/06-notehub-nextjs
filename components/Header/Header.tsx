@@ -3,13 +3,13 @@ import Link from "next/link";
 export default function Header (){
     return (
         <header className={css.header}>
-            <a href="/" aria-label="Home">
+            <a href="/public" aria-label="Home">
                 NoteHub
             </a>
             <nav aria-label="Main Navigation">
                 <ul className={css.navigation}>
                     <li>
-                        <Link href="/">Home</Link>
+                        <Link href="/public">Home</Link>
                     </li>
                     <li>
                         <Link href="/notes">Notes</Link>

@@ -5,11 +5,11 @@ import {keepPreviousData, useQuery} from "@tanstack/react-query";
 import {fetchNotes} from "@/lib/api";
 import {toast, Toaster} from "react-hot-toast";
 import css from "@/app/notes/page.module.css";
-import SearchBox from "@/app/components/SearchBox/SearchBox";
-import Pagination from "@/app/components/Pagination/Pagination";
-import Modal from "@/app/components/Modal/Modal";
-import NoteForm from "@/app/components/NoteForm/NoteForm";
-import NoteList from "@/app/components/NoteList/NoteList";
+import SearchBox from "@/components/SearchBox/SearchBox";
+import Pagination from "@/components/Pagination/Pagination";
+import Modal from "@/components/Modal/Modal";
+import NoteForm from "@/components/NoteForm/NoteForm";
+import NoteList from "@/components/NoteList/NoteList";
 import { useDebouncedCallback } from 'use-debounce';
  // Усю клієнтську логіку (отримання списку нотаток за допомогою useQuery та їх відображення)
 // винесіть в окремий файл компонента app/notes/Notes.client.tsx.
